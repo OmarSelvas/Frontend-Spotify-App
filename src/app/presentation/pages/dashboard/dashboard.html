@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<div class="container">
+  <h1>Music Dashboard</h1>
+
+  <section *ngIf="!isAuthenticated">
+    <button (click)="login()">Conectar con Spotify</button>
+  </section>
+
+  <section *ngIf="isAuthenticated" class="spotify-section">
+    <h2>Spotify Top Tracks</h2>
+    <div class="grid">
+      <div *ngFor="let track of tracks" class="card">
+        <img [src]="track.imageUrl" alt="Cover">
+        <h3>{{ track.name }}</h3>
+        <p>{{ track.artist }}</p>
+        <button (click)="play(track.uri)">Play</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="local-section">
+    <h2>Mis Artistas Locales (Backend)</h2>
+    <ul>
+      <li *ngFor="let artista of artistasLocales">
+        {{ artista.name }} - {{ artista.genre }}
+      </li>
+      <li *ngIf="artistasLocales.length === 0">No hay artistas o backend desconectado.</li>
+    </ul>
+  </section>
+</div>
