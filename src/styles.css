@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #1DB954; 
+  --background-base: #121212;
+  --background-elevated: #181818;
+  --background-highlight: #282828;
+  --text-base: #FFFFFF;
+  --text-subdued: #B3B3B3;
+  --font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-base);
+  color: var(--text-base);
+  overflow: hidden; 
+}
+
+.mat-mdc-card {
+  background-color: var(--background-elevated) !important;
+  color: var(--text-base) !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.mat-mdc-card:hover {
+  background-color: var(--background-highlight) !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

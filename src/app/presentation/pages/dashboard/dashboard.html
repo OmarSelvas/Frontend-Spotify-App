@@ -1,29 +1,36 @@
-<div class="container">
-  <h1>Music Dashboard</h1>
-
-  <section *ngIf="!isAuthenticated">
-    <button (click)="login()">Conectar con Spotify</button>
-  </section>
-
-  <section *ngIf="isAuthenticated" class="spotify-section">
-    <h2>Spotify Top Tracks</h2>
-    <div class="grid">
-      <div *ngFor="let track of tracks" class="card">
-        <img [src]="track.imageUrl" alt="Cover">
-        <h3>{{ track.name }}</h3>
-        <p>{{ track.artist }}</p>
-        <button (click)="play(track.uri)">Play</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="local-section">
-    <h2>Mis Artistas Locales (Backend)</h2>
-    <ul>
-      <li *ngFor="let artista of artistasLocales">
-        {{ artista.name }} - {{ artista.genre }}
-      </li>
-      <li *ngIf="artistasLocales.length === 0">No hay artistas o backend desconectado.</li>
-    </ul>
-  </section>
+<div class="dashboard-header">
+  <h1>Buenas tardes</h1>
 </div>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Top Global Spotify</h2>
+  </div>
+  
+  <div *ngIf="!isAuthenticated" class="login-prompt">
+    <p>Conecta tu cuenta para ver la música</p>
+    <button (click)="login()" class="btn-primary">Conectar Spotify</button>
+  </div>
+
+  <div *ngIf="isAuthenticated" class="grid-container">
+    <div *ngFor="let track of tracks" class="music-card">
+      <div class="image-wrapper">
+        <img [src]="track.imageUrl" alt="Album Art">
+        <button class="play-overlay" (click)="play(track.uri)">▶</button>
+      </div>
+      <h3>{{ track.name }}</h3>
+      <p>{{ track.artist }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Artistas Locales</h2>
+  <div class="grid-container">
+    <div *ngFor="let artista of artistasLocales" class="music-card">
+      <div class="image-wrapper placeholder">🎵</div>
+      <h3>{{ artista.name }}</h3>
+      <p>{{ artista.genre }}</p>
+    </div>
+  </div>
+</section>
